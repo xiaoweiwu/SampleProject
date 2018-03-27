@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="94dp"
+        android:background="@color/white">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="94dp"
+            app:collapsedTitleGravity="center"
+            app:collapsedTitleTextAppearance="@style/toolBarTitle"
+            app:contentScrim="@color/white"
+            app:expandedTitleGravity="left|bottom"
+            app:expandedTitleMarginBottom="12dp"
+            app:expandedTitleMarginStart="@dimen/horizontal_margin"
+            app:expandedTitleTextAppearance="@style/expandTitle"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+            <!--   app:expandedTitleMarginStart="@dimen/horizontal_margin"
+                        app:expandedTitleMarginTop="@dimen/toolbar_height"-->
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/toolbar_height"
+                android:background="@android:color/transparent"
+                android:contentInsetEnd="0dp"
+                android:contentInsetLeft="0dp"
+                android:contentInsetRight="0dp"
+                android:contentInsetStart="0dp"
+                android:elevation="0dp"
+                app:contentInsetEnd="0dp"
+                app:contentInsetLeft="0dp"
+                app:contentInsetRight="0dp"
+                app:contentInsetStart="0dp"
+                app:layout_collapseMode="pin">
+
+                <ImageView
+                    android:id="@+id/iv_back"
+                    style="@style/top_menu_icon"
+                    android:layout_gravity="left"
+                    android:src="@drawable/btn_back_selector"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/iv_back2"
+                    style="@style/top_menu_icon"
+                    android:layout_gravity="left"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/iv_menu1"
+                    style="@style/top_menu_icon"
+                    android:layout_gravity="right"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/iv_menu2"
+                    style="@style/top_menu_icon"
+                    android:layout_gravity="right"
+                    android:visibility="visible" />
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <com.common.basecomponent.fragment.refresh.PtrClassicFrameLayoutEx
+        android:id="@+id/id_ptrframe"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/id_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"></android.support.v7.widget.RecyclerView>
+    </com.common.basecomponent.fragment.refresh.PtrClassicFrameLayoutEx>
+</android.support.design.widget.CoordinatorLayout>

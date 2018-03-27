@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content_foot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    android:gravity="center_horizontal">
+
+    <ProgressBar
+        android:id="@+id/loadmore_default_footer_progressbar"
+        style="?android:attr/progressBarStyleSmallInverse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginRight="15dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/loadmore_default_footer_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/click_load_more"
+        android:textColor="#a5a5a5"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/iv_footer_img"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:scaleType="centerInside"
+        android:visibility="gone" />
+</LinearLayout>
+
+    <!-- <?xml version="1.0" encoding="utf-8"?> --><!-- <RelativeLayout xmlns:fullsharetop="http://schemas.android.com/apk/res/android" --><!--     fullsharetop:layout_width="match_parent" --><!--     fullsharetop:layout_height="40dp" > -->
+
+    <!--     <TextView --><!--         fullsharetop:id="@+id/loadmore_default_footer_tv" --><!--         fullsharetop:layout_width="127dp" --><!--         fullsharetop:layout_height="wrap_content" --><!--         fullsharetop:layout_centerInParent="true" --><!--         fullsharetop:gravity="center" --><!--         fullsharetop:text="点击加载更多" --><!--         fullsharetop:textColor="#a5a5a5" --><!--         fullsharetop:textSize="14sp" /> -->
+
+    <!--     <ProgressBar --><!--         fullsharetop:id="@+id/loadmore_default_footer_progressbar" --><!--         style="@fullsharetop:style/Widget.ProgressBar.Small" --><!--         fullsharetop:layout_width="wrap_content" --><!--         fullsharetop:layout_height="wrap_content" --><!--         fullsharetop:layout_centerVertical="true" --><!--         fullsharetop:layout_marginRight="10dp" --><!--         fullsharetop:layout_toLeftOf="@id/loadmore_default_footer_tv" --><!--         fullsharetop:visibility="gone" --><!--         fullsharetop:layout_gravity="center" /> -->
+
+    <!-- </RelativeLayout> -->

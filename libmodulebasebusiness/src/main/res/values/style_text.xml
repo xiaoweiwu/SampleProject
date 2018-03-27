@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="title" parent="pingfangsc_medium">
+        <item name="android:textColor">@color/common_text_color</item>
+        <item name="android:textSize">@dimen/title</item>
+        <item name="android:layout_marginBottom">@dimen/dp_2</item>
+        <item name="android:layout_marginTop">@dimen/dp_3</item>
+        <item name="android:layout_marginLeft">@dimen/horizontal_margin</item>
+    </style>
+
+    <style name="expandTitle" parent="pingfangsc_medium">
+        <item name="android:textColor">@color/common_text_color</item>
+        <item name="android:textSize">@dimen/title</item>
+    </style>
+
+    <style name="toolBarTitle" parent="pingfangsc_medium">
+        <item name="android:textColor">@color/common_text_color</item>
+        <item name="android:textSize">@dimen/text_size_18</item>
+    </style>
+
+    <style name="content_title" parent="pingfangsc_regular">
+        <item name="android:textColor">@color/common_text_color</item>
+        <item name="android:textSize">@dimen/content_title</item>
+    </style>
+
+    <style name="content" parent="pingfangsc_light">
+        <item name="android:textColor">@color/common_text_color</item>
+        <item name="android:textSize">@dimen/content</item>
+        <item name="android:textColorHint">@color/common_text_grey_color</item>
+
+    </style>
+
+    <style name="flowTitle" parent="pingfangsc_medium">
+        <item name="android:textColor">@color/common_text_color</item>
+        <item name="android:textSize">@dimen/flow_title</item>
+        <item name="android:textColorHint">@color/common_text_grey_color</item>
+    </style>
+
+    <style name="list_function_value" parent="pingfangsc_light">
+        <item name="android:textColor">@color/common_text_grey_color</item>
+        <item name="android:textSize">@dimen/list_function</item>
+    </style>
+
+    <style name="content_tip" parent="pingfangsc_light">
+        <item name="android:textColor">@color/common_text_grey_dark_color</item>
+        <item name="android:textSize">@dimen/list_function</item>
+    </style>
+
+    <style name="tips" parent="pingfangsc_light">
+        <item name="android:textColor">@color/common_text_grey_color</item>
+        <item name="android:textSize">@dimen/tips</item>
+    </style>
+
+    <style name="text_button" parent="pingfangsc_medium">
+        <item name="android:textSize">@dimen/action_text</item>
+        <item name="android:textColor">@color/button_text_color</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="black_text_button" parent="pingfangsc_medium">
+        <item name="android:textSize">@dimen/action_text</item>
+        <item name="android:textColor">@color/button_black_text_color</item>
+    </style>
+
+    <style name="search_text" parent="pingfangsc_light">
+        <item name="android:textColor">@color/common_text_color</item>
+        <item name="android:textSize">@dimen/text_size_15</item>
+        <item name="android:textColorHint">@color/common_text_disable_color</item>
+    </style>
+</resources>

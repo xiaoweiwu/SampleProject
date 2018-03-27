@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--字体-->
+    <dimen name="title">@dimen/text_size_32</dimen>
+    <dimen name="content_title">@dimen/text_size_20</dimen>
+    <dimen name="content">@dimen/text_size_18</dimen>
+    <dimen name="flow_title">@dimen/text_size_16</dimen>
+    <dimen name="action_text">@dimen/text_size_16</dimen>
+    <dimen name="list_function">@dimen/text_size_15</dimen>
+    <dimen name="tips">@dimen/text_size_13</dimen>
+
+    <!--间距-->
+    <dimen name="horizontal_margin">@dimen/dp_15</dimen>
+
+    <dimen name="tab_height">@dimen/dp_35</dimen>
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ListItemLayout">
+        <attr name="LiShowDivider" format="boolean" />
+        <attr name="LiTitle" format="string" />
+        <attr name="LiType" format="enum">
+            <enum name="type_text" value="0" />
+            <enum name="type_switch" value="1" />
+            <enum name="type_arrow" value="2" />
+        </attr>
+        <attr name="LiDividerMarginLR" format="dimension" />
+        <attr name="LiContentMarginLeft" format="dimension" />
+        <attr name="LiContentMarginRight" format="dimension" />
+    </declare-styleable>
+    <attr name="sizeBase" format="enum">
+        <enum name="width" value="0" />
+        <enum name="height" value="1" />
+    </attr>
+    <attr name="sizeWidth" format="integer" />
+    <attr name="sizeHeight" format="integer" />
+    <attr name="rate" format="float" />
+    <declare-styleable name="SizeRatioImageView">
+        <attr name="sizeBase" />
+        <attr name="sizeWidth" />
+        <attr name="sizeHeight" />
+    </declare-styleable>
+    <declare-styleable name="SizeRatioRelativeLayout">
+        <attr name="sizeBase" />
+        <attr name="rate" />
+    </declare-styleable>
+</resources>

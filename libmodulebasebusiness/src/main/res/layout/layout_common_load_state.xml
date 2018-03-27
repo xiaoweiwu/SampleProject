@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_loading"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_grey_background">
+
+    <RelativeLayout
+        android:id="@+id/rt_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/iv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"
+            tools:src="@drawable/ic_nowifi"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/animProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_status"
+            android:layout_centerInParent="true" />
+
+        <TextView
+            android:id="@+id/txt_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_status"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/text_size_14"
+            tools:text="无网络" />
+
+        <TextView
+            android:id="@+id/txt_status_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_status"
+            android:layout_centerHorizontal="true"
+            tools:text="暂时没有数据显示" />
+
+        <TextView
+            android:id="@+id/txt_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_status_2"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            tools:text="刷新" />
+        <!-- android:background="@drawable/bg_loading_status_action"
+                    android:textColor="@color/text_color_40"-->
+    </RelativeLayout>
+
+</RelativeLayout>

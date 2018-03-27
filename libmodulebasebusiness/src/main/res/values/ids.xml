@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="id_page_title" type="id"></item>
+    <item name="id_page_divider" type="id"></item>
+
+    <item name="id_full_screen" type="id"></item>
+    <item name="viewpager" type="id"></item>
+    <item name="tablayout" type="id"></item>
+</resources>

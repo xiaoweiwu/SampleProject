@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="content_id" type="id"></item>
+    <item name="content_layout" type="id"></item>
+    <item name="toolbar" type="id"></item>
+    <item name="iv_back" type="id"></item>
+    <item name="webview" type="id"></item>
+</resources>

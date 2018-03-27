@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="mfyuehei_regular">
+        <item name="android:contentDescription">font:MFYueHei-Regular</item>
+        <!--<item name="android:fontFamily">sans-serif</item>-->
+    </style>
+
+    <style name="pingfangsc_regular">
+        <item name="android:contentDescription">font:PingFangSC-Regular</item>
+        <!--<item name="android:fontFamily">sans-serif</item>-->
+    </style>
+
+    <style name="pingfangsc_light">
+        <item name="android:contentDescription">font:PingFangSC-Light</item>
+        <!--<item name="android:fontFamily">sans-serif-light</item>-->
+    </style>
+
+    <style name="pingfangsc_medium">
+        <item name="android:contentDescription">font:PingFangSC-Medium</item>
+        <!--<item name="android:fontFamily">sans-serif-condensed</item>-->
+    </style>
+
+    <style name="pingfangsc_semibold">
+        <item name="android:contentDescription">font:PingFangSC-Semibold</item>
+        <!--<item name="android:fontFamily">sans-serif-condensed</item>-->
+    </style>
+</resources>

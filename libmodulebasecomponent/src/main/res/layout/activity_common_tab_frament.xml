@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.common.basecomponent.widget.ToolBarEx
+        android:id="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <!--<com.viewpagerindicator.TabPageIndicator-->
+    <!--android:id="@+id/tabindicator"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/dp_38"-->
+    <!--android:background="@color/white"-->
+    <!--app:tpi_customTabTextLayoutId="@layout/layout_collection_tabview"-->
+    <!--/>-->
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"></android.support.design.widget.TabLayout>
+    <!--<com.ogaclejapan.smarttablayout.SmartTabLayout-->
+    <!--android:id="@+id/viewpagertab"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="40dp"-->
+    <!--android:background="@android:color/white"-->
+    <!--app:stl_distributeEvenly="true"-->
+    <!--app:stl_dividerThickness="0dp"-->
+    <!--app:stl_indicatorGravity="bottom"-->
+    <!--app:stl_indicatorInterpolation="linear"-->
+    <!--app:stl_indicatorThickness="2dp"-->
+    <!--app:stl_underlineThickness="0dp"-->
+    <!--/>-->
+    <com.common.basecomponent.widget.ScrollControlViewPager
+        android:id="@+id/vp_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

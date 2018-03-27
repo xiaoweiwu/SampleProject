@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?><!--<android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:app="http://schemas.android.com/apk/res-auto"--><!--android:id="@+id/appbar"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:fitsSystemWindows="true"--><!--app:elevation="0dp"--><!--&gt;-->
+
+<!--<android.support.v7.widget.Toolbar--><!--xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:app="http://schemas.android.com/apk/res-auto"--><!--android:id="@+id/tb_toolbar"--><!--android:layout_width="match_parent"--><!--android:layout_height="@dimen/toolbar_height"--><!--app:contentInsetStart="0dp">-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlTitle"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/toolbar_height"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+    <!--android:background="@color/navi_background"-->
+    <FrameLayout
+        android:id="@+id/flLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true">
+
+        <Button
+            android:id="@+id/btnLeft"
+            style="@style/top_menu_button" />
+
+        <ImageView
+            android:id="@+id/ivback"
+            style="@style/top_menu_icon"
+            android:visibility="visible" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/flLeft2"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:visibility="invisible">
+
+        <Button style="@style/top_menu_button" />
+
+        <ImageView
+            style="@style/top_menu_icon"
+            android:visibility="visible" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/llMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:minWidth="44dp">
+
+        <FrameLayout
+            android:id="@+id/flRight3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btnRight3"
+                style="@style/top_menu_button"
+                tools:enabled="false"
+                tools:text="完成"
+                tools:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/ivRight3"
+                style="@style/top_menu_icon"
+                tools:src="@android:drawable/ic_menu_more"
+                tools:visibility="visible" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/flRight2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btnRight2"
+                style="@style/top_menu_button"
+                tools:enabled="false"
+                tools:text="完成"
+                tools:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/ivRight2"
+                style="@style/top_menu_icon"
+                tools:src="@android:drawable/ic_menu_more"
+                tools:visibility="visible" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/flRight"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btnRight"
+                style="@style/top_menu_button"
+                android:layout_marginRight="@dimen/dp_10"
+                tools:enabled="false"
+                tools:text="完成"
+                tools:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/ivRight"
+                style="@style/top_menu_icon"
+                tools:src="@android:drawable/ic_menu_more"
+                tools:visibility="visible" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/flLeft2"
+        android:maxLines="1"
+        android:textColor="@color/common_text_color"
+        android:textSize="@dimen/text_size_18"
+        tools:text="这是标题" />
+
+    <FrameLayout
+        android:id="@+id/fl_custom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+    </FrameLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/divider" />
+
+</RelativeLayout>
+
+    <!--</android.support.v7.widget.Toolbar>--><!--</android.support.design.widget.AppBarLayout>-->

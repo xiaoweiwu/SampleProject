@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_50"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_ani"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="invisible" />
+
+    <com.fullshare.basebusiness.widget.PulltorefreshAnimationView
+        android:id="@+id/pull_animation_view"
+        android:layout_width="@dimen/dp_15"
+        android:layout_height="@dimen/dp_15"
+        android:layout_gravity="bottom|center_horizontal" />
+</FrameLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.common.basecomponent.widget.ToolBarEx
+        android:id="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <FrameLayout
+        android:id="@id/content_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.common.basecomponent.fragment.refresh.PtrClassicFrameLayoutEx
+            android:id="@+id/id_ptrframe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/id_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical" />
+        </com.common.basecomponent.fragment.refresh.PtrClassicFrameLayoutEx>
+    </FrameLayout>
+</LinearLayout>

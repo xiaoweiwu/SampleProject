@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="loading_dialog_bg">#76000000</color>
+
+    <color name="cl_list_item_pressed">#f2f2f2</color>
+
+    <color name="pillow">#2F3576</color>
+</resources>

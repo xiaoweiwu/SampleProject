@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">BaseComponent</string>
+    <string name="click_load_more">点击加载更多</string>
+</resources>
