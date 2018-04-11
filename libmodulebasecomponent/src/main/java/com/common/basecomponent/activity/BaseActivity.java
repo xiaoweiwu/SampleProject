@@ -14,7 +14,7 @@ import com.common.basecomponent.fragment.LoadingViewController;
 import com.common.basecomponent.fragment.refresh.ALoadingView;
 import com.common.basecomponent.util.ActivityManageController;
 import com.common.basecomponent.widget.ToolBarEx;
-import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;

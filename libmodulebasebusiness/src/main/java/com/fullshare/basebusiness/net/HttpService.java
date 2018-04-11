@@ -15,24 +15,27 @@ import com.fullshare.basebusiness.api.RespCode;
 import com.fullshare.basebusiness.constants.Argumentkey;
 import com.fullshare.basebusiness.constants.BusinessEvent;
 import com.fullshare.basebusiness.util.GsonHelper;
-import com.trello.rxlifecycle.LifecycleProvider;
-import com.trello.rxlifecycle.RxLifecycle;
-import com.trello.rxlifecycle.android.ActivityEvent;
-import com.trello.rxlifecycle.android.FragmentEvent;
+import com.trello.rxlifecycle2.LifecycleProvider;
+import com.trello.rxlifecycle2.RxLifecycle;
+import com.trello.rxlifecycle2.android.ActivityEvent;
+import com.trello.rxlifecycle2.android.FragmentEvent;
 import com.umeng.analytics.MobclickAgent;
 
 import org.json.JSONObject;
+import org.reactivestreams.Subscriber;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Type;
 
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.Response;
-import rx.Observable;
-import rx.Observable.OnSubscribe;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by wuxiaowei on 2016/12/26.
@@ -45,22 +48,18 @@ public class HttpService {
     }
 
     public static <T> void request(final Context context, LifecycleProvider lifecycleProvider, final CommonHttpRequest request, final OnResponseCallback<T> callback) {
-        WeakReference<Activity> weakReference = null;
-        if (context instanceof Activity) {
-            weakReference = new WeakReference<Activity>((Activity) context);
-        }
-        Observable<T> tObservable = Observable.create(new OnSubscribe<T>() {
+        Observable<T> tObservable = Observable.create(new ObservableOnSubscribe<T>() {
             @Override
-            public void call(Subscriber<? super T> subscriber) {
+            public void subscribe(ObservableEmitter<T> emitter) throws Exception {
                 CommonHttpResponse<T> response = getRemoteData(context, request, callback != null ? callback.getType() : null);
                 if (response.isBusinessSuccessful()) {
-                    subscriber.onNext(response.getData());
-                    subscriber.onCompleted();
+                    emitter.onNext(response.getData());
+                    emitter.onComplete();
                 } else {
-                    subscriber.onError(response.getException());
+                    emitter.onError(response.getException());
                 }
-
             }
+
         });
         if (lifecycleProvider == null) {
             if (context instanceof LifecycleProvider) {
@@ -69,15 +68,16 @@ public class HttpService {
         } else {
             tObservable = tObservable.compose(RxLifecycle.<T, FragmentEvent>bindUntilEvent(lifecycleProvider.lifecycle(), FragmentEvent.DESTROY_VIEW));
         }
-        final WeakReference<Activity> finalWeakReference = weakReference;
+        if (callback != null) {
+            callback.onStart();
+        }
         tObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<T>() {
+                .subscribe(new Observer<T>() {
+
                     @Override
-                    public void onStart() {
-                        if (callback != null) {
-                            callback.onStart();
-                        }
+                    public void onSubscribe(Disposable d) {
+
                     }
 
                     @Override
@@ -90,11 +90,11 @@ public class HttpService {
 
                     @Override
                     public void onError(Throwable e) {
-                        onHandleError(context, request, e, callback, finalWeakReference);
+                        onHandleError(context, request, e, callback);
                     }
 
                     @Override
-                    public void onCompleted() {
+                    public void onComplete() {
 
                     }
                 });
@@ -185,7 +185,7 @@ public class HttpService {
         return realResponse;
     }
 
-    private static void onHandleError(Context context, CommonHttpRequest request, Throwable e, OnResponseCallback callback, WeakReference<Activity> finalWeakReference) {
+    private static void onHandleError(Context context, CommonHttpRequest request, Throwable e, OnResponseCallback callback) {
         if (e == null) {
             if (callback != null) {
                 ResponseStatus responseStatus = new ResponseStatus(-1, ErrorType.UNKNOW_ERROR

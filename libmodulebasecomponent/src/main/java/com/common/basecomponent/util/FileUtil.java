@@ -11,10 +11,6 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.common.basecomponent.net.OkHttpHelper;
-import com.trello.rxlifecycle.LifecycleProvider;
-import com.trello.rxlifecycle.RxLifecycle;
-import com.trello.rxlifecycle.android.ActivityEvent;
-import com.trello.rxlifecycle.android.FragmentEvent;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -27,12 +23,14 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.text.DecimalFormat;
 
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
-import rx.Observable;
-import rx.Observable.OnSubscribe;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by wuxiaowei on 2017/1/11.
@@ -191,9 +189,12 @@ public class FileUtil {
     }
 
     public static void asyncSaveBitmap(final Context context, final Bitmap bitmap, final String fileName, final OnSaveFileListener saveFileListener) {
-        Observable.create(new OnSubscribe<String>() {
+        if (saveFileListener != null) {
+            saveFileListener.onStart();
+        }
+        Observable.create(new ObservableOnSubscribe<String>() {
             @Override
-            public void call(Subscriber<? super String> subscriber) {
+            public void subscribe(ObservableEmitter<String> emitter) {
                 try {
                     Bitmap bitmap1 = null;
                     if (saveFileListener != null) {
@@ -203,25 +204,26 @@ public class FileUtil {
                     if (saveFileListener != null) {
                         saveFileListener.onAfterSave(file, bitmap1);
                     }
-                    subscriber.onNext(file);
-                    subscriber.onCompleted();
+                    emitter.onNext(file);
+                    emitter.onComplete();
                 } catch (Exception e) {
                     e.printStackTrace();
-                    subscriber.onError(e);
+                    emitter.onError(e);
                 }
             }
         }).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<String>() {
+                .subscribe(new Observer<String>() {
                     @Override
-                    public void onStart() {
-                        if (saveFileListener != null) {
-                            saveFileListener.onStart();
-                        }
+                    public void onSubscribe(Disposable d) {
+
                     }
 
                     @Override
-                    public void onCompleted() {
+                    public void onNext(String s) {
+                        if (saveFileListener != null) {
+                            saveFileListener.onSuccess(fileName);
+                        }
                     }
 
                     @Override
@@ -232,52 +234,7 @@ public class FileUtil {
                     }
 
                     @Override
-                    public void onNext(String fileName) {
-                        if (saveFileListener != null) {
-                            saveFileListener.onSuccess(fileName);
-                        }
-
-                    }
-                });
-    }
-
-
-    public static void asyncDownloadFile(final Context context, LifecycleProvider lifecycleProvider, final String url, final String fileName, final OnSaveFileListener saveFileListener) {
-        Observable observable = Observable.create(new OnSubscribe<Boolean>() {
-            @Override
-            public void call(Subscriber<? super Boolean> subscriber) {
-                boolean success = downloadTemplateImage(url, fileName);
-                subscriber.onNext(success);
-                subscriber.onCompleted();
-            }
-        });
-        if (lifecycleProvider == null) {
-            if (context instanceof LifecycleProvider) {
-                observable = observable.compose(RxLifecycle.<Boolean, ActivityEvent>bindUntilEvent(((LifecycleProvider<ActivityEvent>) context).lifecycle(), ActivityEvent.DESTROY));
-            }
-        } else {
-            observable = observable.compose(RxLifecycle.<Boolean, FragmentEvent>bindUntilEvent(lifecycleProvider.lifecycle(), FragmentEvent.DESTROY_VIEW));
-        }
-        observable.subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Boolean>() {
-                    @Override
-                    public void onStart() {
-                        saveFileListener.onStart();
-                    }
-
-                    @Override
-                    public void onCompleted() {
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        saveFileListener.onFailed(e);
-                    }
-
-                    @Override
-                    public void onNext(Boolean success) {
-                        saveFileListener.onSuccess(fileName);
+                    public void onComplete() {
 
                     }
                 });

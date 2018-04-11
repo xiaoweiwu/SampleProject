@@ -25,7 +25,7 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile rootProject.ext.dependencies.appcompat_v7
     compile rootProject.ext.dependencies.recyclerview_v7
-    compile rootProject.ext.dependencies.cardview
+//    compile rootProject.ext.dependencies.cardview
     compile rootProject.ext.dependencies.design
     compile(rootProject.ext.dependencies.support_v4)
     compile rootProject.ext.dependencies.okhttp3
