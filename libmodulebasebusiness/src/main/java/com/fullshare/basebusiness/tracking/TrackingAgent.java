@@ -2,7 +2,6 @@ package com.fullshare.basebusiness.tracking;
 
 import android.content.Context;
 
-import com.umeng.analytics.MobclickAgent;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,7 +17,7 @@ import java.util.Iterator;
 public class TrackingAgent {
 
     public static void onAppExit(Context context) {
-        MobclickAgent.onKillProcess(context);
+//        StatisticsManager.onKillProcess(context);
     }
 
     public static void onEvent(Context context, String data) {
@@ -50,13 +49,13 @@ public class TrackingAgent {
     private static void addUMPageId(String data) {
         try {
             JSONObject jsonObject = new JSONObject(data);
-            MobclickAgent.onPageStart(jsonObject.getString("page_id"));
+//            StatisticsManager.onPageStart(jsonObject.getString("page_id"));
         } catch (JSONException e) {
         }
     }
 
     private static void addUMPageEnd(Context context, String pageId) {
-        MobclickAgent.onPageEnd(pageId);
+//        StatisticsManager.onPageEnd(pageId);
     }
 
     private static void addUMEvent(Context context, String data, HashMap<String, String> extras) {
@@ -73,7 +72,7 @@ public class TrackingAgent {
             if (extras != null) {
                 map.putAll(extras);
             }
-            MobclickAgent.onEvent(context, eventId, map);
+//            StatisticsManager.onEvent(context, eventId, map);
         } catch (Exception e) {
             e.printStackTrace();
         }

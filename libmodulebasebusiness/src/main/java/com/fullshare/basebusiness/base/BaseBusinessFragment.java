@@ -3,7 +3,8 @@ package com.fullshare.basebusiness.base;
 import com.common.basecomponent.fragment.BaseFragment;
 import com.common.basecomponent.fragment.refresh.ALoadingView;
 import com.fullshare.basebusiness.widget.LoadingLayout;
-import com.umeng.analytics.MobclickAgent;
+
+import common.service.StatisticsManager;
 
 /**
  * Created by wuxiaowei on 2017/5/12.
@@ -22,7 +23,7 @@ public abstract class BaseBusinessFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         if (getSettingOptions().isStatisticsEnable()) {
-            MobclickAgent.onPageStart(getClass().getSimpleName());
+            StatisticsManager.onPageStart(getClass().getSimpleName());
         }
     }
 
@@ -30,7 +31,7 @@ public abstract class BaseBusinessFragment extends BaseFragment {
     public void onPause() {
         super.onPause();
         if (getSettingOptions().isStatisticsEnable()) {
-            MobclickAgent.onPageEnd(getClass().getSimpleName());
+            StatisticsManager.onPageEnd(getClass().getSimpleName());
         }
     }
 

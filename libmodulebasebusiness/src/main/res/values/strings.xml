@@ -8,8 +8,5 @@
     <string name="choose_in_pictures">从相册中选择</string>
     <string name="check_update_available">检测到新版本V%s</string>
     <string name="checked_update_version">检测到新版本</string>
-
-    <string name="cancel">取消</string>
-    <string name="confirm">确定</string>
-    <string name="retry_require_permission">%s，是否重新获取？</string>
+    <string name="share_qq_no_permission">未授予存储权限，无法进行QQ分享</string>
 </resources>

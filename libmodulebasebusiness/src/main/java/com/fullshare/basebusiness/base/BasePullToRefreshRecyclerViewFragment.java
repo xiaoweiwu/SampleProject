@@ -18,11 +18,12 @@ import com.fullshare.basebusiness.net.OnResponseCallback;
 import com.fullshare.basebusiness.net.ResponseStatus;
 import com.fullshare.basebusiness.widget.CustomPtrHeader;
 import com.fullshare.basebusiness.widget.LoadingLayout;
-import com.umeng.analytics.MobclickAgent;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.List;
+
+import common.service.StatisticsManager;
 
 /**
  * Created by wuxiaowei on 2017/3/21.
@@ -162,7 +163,7 @@ public abstract class BasePullToRefreshRecyclerViewFragment extends PullToRefres
                         super.onLayoutChildren(recycler, state);
                     } catch (IndexOutOfBoundsException e) {
                         L.e(e, "IndexOutOfBoundsException");
-                        MobclickAgent.reportError(mContext, e);
+                        StatisticsManager.reportError(mContext, e);
                     }
                 }
             };
@@ -174,7 +175,7 @@ public abstract class BasePullToRefreshRecyclerViewFragment extends PullToRefres
     public void onResume() {
         super.onResume();
         if (getSettingOptions().isStatisticsEnable()) {
-            MobclickAgent.onPageStart(getClass().getSimpleName());
+            StatisticsManager.onPageStart(getClass().getSimpleName());
         }
     }
 
@@ -182,7 +183,7 @@ public abstract class BasePullToRefreshRecyclerViewFragment extends PullToRefres
     public void onPause() {
         super.onPause();
         if (getSettingOptions().isStatisticsEnable()) {
-            MobclickAgent.onPageEnd(getClass().getSimpleName());
+            StatisticsManager.onPageEnd(getClass().getSimpleName());
         }
     }
 }

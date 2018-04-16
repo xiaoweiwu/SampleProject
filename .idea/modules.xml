@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/SampleProject.iml" filepath="$PROJECT_DIR$/SampleProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libmodulebasebusiness/libmodulebasebusiness.iml" filepath="$PROJECT_DIR$/libmodulebasebusiness/libmodulebasebusiness.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libmodulebasecomponent/libmodulebasecomponent.iml" filepath="$PROJECT_DIR$/libmodulebasecomponent/libmodulebasecomponent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libmodulepush/libmodulepush.iml" filepath="$PROJECT_DIR$/libmodulepush/libmodulepush.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libmodulethirdservice/libmodulethirdservice.iml" filepath="$PROJECT_DIR$/libmodulethirdservice/libmodulethirdservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libmodulezxing/libmodulezxing.iml" filepath="$PROJECT_DIR$/libmodulezxing/libmodulezxing.iml" />
+    </modules>
+  </component>
+</project>

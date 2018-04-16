@@ -4,9 +4,8 @@ import com.common.basecomponent.BaseApplication;
 import com.common.basecomponent.util.L;
 import com.fullshare.basebusiness.constants.AppConfig;
 import com.orhanobut.logger.Logger;
-import com.umeng.message.IUmengRegisterCallback;
+//import com.umeng.message.IUmengRegisterCallback;
 
-import common.service.PushManager;
 import common.service.SocialManager;
 import common.service.StatisticsManager;
 
@@ -64,17 +63,17 @@ public abstract class BaseBusinessApplication extends BaseApplication {
     }
 
     private void initPush() {
-        PushManager.init(this, getChannel(), isDebug(), new IUmengRegisterCallback() {
-            @Override
-            public void onSuccess(String s) {
-
-            }
-
-            @Override
-            public void onFailure(String s, String s1) {
-
-            }
-        });
+//        PushManager.init(this, getChannel(), isDebug(), new IUmengRegisterCallback() {
+//            @Override
+//            public void onSuccess(String s) {
+//
+//            }
+//
+//            @Override
+//            public void onFailure(String s, String s1) {
+//
+//            }
+//        });
     }
 
 }

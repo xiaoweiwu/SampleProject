@@ -1,6 +1,5 @@
 package com.fullshare.basebusiness.net;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
@@ -19,15 +18,13 @@ import com.trello.rxlifecycle2.LifecycleProvider;
 import com.trello.rxlifecycle2.RxLifecycle;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.android.FragmentEvent;
-import com.umeng.analytics.MobclickAgent;
 
 import org.json.JSONObject;
-import org.reactivestreams.Subscriber;
 
 import java.io.IOException;
-import java.lang.ref.WeakReference;
 import java.lang.reflect.Type;
 
+import common.service.StatisticsManager;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -198,12 +195,12 @@ public class HttpService {
         try {
             L.e(e.toString(), "");
         } catch (Exception e1) {
-            MobclickAgent.reportError(context, e);
+            StatisticsManager.reportError(context, e);
         }
 
         if (e instanceof AppHttpException) {
             if (((AppHttpException) e).getErrorType() == ErrorType.UNKNOW_ERROR) {
-                MobclickAgent.reportError(context, e);
+                StatisticsManager.reportError(context, e);
             }
             AppHttpException ex = (AppHttpException) e;
             ResponseStatus responseStatus = new ResponseStatus(ex.getExCode(), ex.getErrorType()

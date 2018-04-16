@@ -1,28 +1,30 @@
-package com.fullshare.basebusiness.util;
+package common.service;
+
+import android.content.Context;
+import android.util.Log;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationClientOption.AMapLocationMode;
 import com.amap.api.location.AMapLocationListener;
-import com.common.basecomponent.util.L;
-import com.fullshare.basebusiness.BaseBusinessApplication;
 
 /**
  * author: wuxiaowei
  * date : 2017/3/23
  */
 public class LocationHelper {
+    public static final String TAG = "LocationHelper";
     private AMapLocationClient mLocationClient;
     private AMapLocationClientOption mLocationOption = null;
 
-    public LocationHelper() {
-        init();
+    public LocationHelper(Context context) {
+        init(context);
     }
 
-    private void init() {
+    private void init(Context context) {
         // 声明mLocationOption对象
-        mLocationClient = new AMapLocationClient(BaseBusinessApplication.get());
+        mLocationClient = new AMapLocationClient(context);
         // 初始化定位参数
         mLocationOption = new AMapLocationClientOption();
         // 设置定位模式为高精度模式，Battery_Saving为低功耗模式，Device_Sensors是仅设备模式
@@ -54,7 +56,7 @@ public class LocationHelper {
                 }
                 if (listener != null) {
                     if (location != null) {
-                        L.d(location);
+                        Log.d(TAG,location.toString());
                     }
                     listener.result(location);
                 }

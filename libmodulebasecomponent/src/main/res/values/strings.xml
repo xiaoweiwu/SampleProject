@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">BaseComponent</string>
     <string name="click_load_more">点击加载更多</string>
+
+    <string name="cancel">取消</string>
+    <string name="confirm">确定</string>
+    <string name="retry_require_permission">%s，是否重新获取？</string>
+    <string name="goto_permission_manager_center">%s，请前往权限管理中设置</string>
 </resources>

@@ -43,7 +43,7 @@ dependencies {
     compile rootProject.ext.dependencies.rxlifecycle_android
     compile rootProject.ext.dependencies.rxlifecycle_components
     compile rootProject.ext.dependencies.rxpermissions
-    compile rootProject.ext.dependencies.swipemenulistview
+//    compile rootProject.ext.dependencies.swipemenulistview
     compile 'com.yqritc:recyclerview-flexibledivider:1.4.0'
     compile rootProject.ext.dependencies.FlycoTabLayout_Lib
 

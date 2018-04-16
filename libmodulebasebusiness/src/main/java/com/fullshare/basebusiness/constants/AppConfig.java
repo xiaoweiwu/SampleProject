@@ -18,6 +18,7 @@ public class AppConfig {
     public final static String UMENG_SHARE_WX_APPID = "";
     public final static String UMENG_SHARE_WX_APPSECRET = "";
     public static final String UMENT_APP_KEY = "";
+    public static final String WX_APP_NAME = "";
 
     public static class BusinessMethod {
         public static final String HEALTH_AUTHOR_DETAIL = "getAuthorDetail"; //专家基本信息

@@ -7,8 +7,10 @@ import com.common.basecomponent.fragment.refresh.ALoadingView;
 import com.fullshare.basebusiness.R;
 import com.fullshare.basebusiness.widget.LoadingDialog;
 import com.fullshare.basebusiness.widget.LoadingLayout;
-import com.umeng.analytics.MobclickAgent;
-import com.umeng.message.PushAgent;
+
+import common.service.StatisticsManager;
+
+//import common.service.StatisticsManager;
 
 /**
  * author: wuxiaowei
@@ -29,7 +31,7 @@ public abstract class CommonBaseActivity extends BaseActivity {
 
     @Override
     protected void preInitView() {
-        PushAgent.getInstance(this).onAppStart();
+//        PushAgent.getInstance(this).onAppStart();
         super.preInitView();
         if (getToolBarEx() != null) {
 //            getToolBarEx().setDividerVisiblity(View.INVISIBLE);
@@ -45,7 +47,7 @@ public abstract class CommonBaseActivity extends BaseActivity {
         super.onResume();
         TinkerUtil.setBackground(false);
         if (getSettingOptions().isStatisticsEnable()) {
-            MobclickAgent.onResume(this);
+            StatisticsManager.onResume(this);
         }
     }
 
@@ -54,7 +56,7 @@ public abstract class CommonBaseActivity extends BaseActivity {
         super.onPause();
         TinkerUtil.setBackground(true);
         if (getSettingOptions().isStatisticsEnable()) {
-            MobclickAgent.onPause(this);
+            StatisticsManager.onPause(this);
         }
     }
 

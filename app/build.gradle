@@ -1,27 +1,108 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
     defaultConfig {
-        applicationId "com.fstop.simpleproject"
-        minSdkVersion 19
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        applicationId rootProject.ext.android.applicationId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+        disable 'MissingTranslation'
+        disable 'ExtraTranslation'
+    }
+    signingConfigs {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            def Properties buildSignProps = getSignProperty()
+            try {
+                storeFile file(buildSignProps['STORE_FILE'])
+                keyAlias buildSignProps['KEY_ALIAS']
+                keyPassword buildSignProps['KEY_PASSWORD']
+                storePassword buildSignProps['STORE_PASSWORD']
+            } catch (Exception e) {
+                buildSignProps = getDebugProperty()
+                storeFile file(buildSignProps['STORE_FILE'])
+                keyAlias buildSignProps['KEY_ALIAS']
+                keyPassword buildSignProps['KEY_PASSWORD']
+                storePassword buildSignProps['STORE_PASSWORD']
+            }
+        }
+
+        debug {
+            def Properties buildSignProps = getDebugProperty()
+            storeFile file(buildSignProps['STORE_FILE'])
+            keyAlias buildSignProps['KEY_ALIAS']
+            keyPassword buildSignProps['KEY_PASSWORD']
+            storePassword buildSignProps['STORE_PASSWORD']
         }
     }
+
+    buildTypes {
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            buildConfigField "int", "HOST_TYPE", "3"//1开发环境，2测试环境，3正式环境，
+            buildConfigField "int", "EN_TYPE", "2"//1测试，2正式，
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true// 移除无用的resource文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        releasetest {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            buildConfigField "int", "HOST_TYPE", "2"//1开发环境，2测试环境，3正式环境，
+            buildConfigField "int", "EN_TYPE", "1"//1测试，2正式
+
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true// 移除无用的resource文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+//            versionNameSuffix "develop"
+        }
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            buildConfigField "int", "HOST_TYPE", "2"//1开发环境，2测试环境，3正式环境，
+            buildConfigField "int", "EN_TYPE", "1"//1测试环境，2正式环境，
+            signingConfig signingConfigs.debug
+            versionNameSuffix "develop"
+//            applicationIdSuffix ".develop"
+        }
+    }
+
+}
+def getSignProperty() {
+    def Properties buildProperties = new Properties()
+    try {
+        buildProperties.load(new FileInputStream(file('/home/fullshare/Documents/android_key/sign.properties')))
+    } catch (Exception ignored) {
+    }
+    return buildProperties
 }
 
+def getDebugProperty() {
+    def Properties buildProperties = new Properties()
+    try {
+        buildProperties.load(new FileInputStream(file('D:\\fsb_keys\\sign.properties')))
+    } catch (Exception e) {
+        buildProperties.load(new FileInputStream(file('../config/debug.properties')))
+    }
+    return buildProperties
+}
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.0.0-beta1'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:0.5'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2'
     implementation project(':libmodulebasebusiness')
 }

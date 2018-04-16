@@ -13,16 +13,19 @@ import com.umeng.socialize.UMShareConfig;
 
 public class SocialManager {
 
+    public static final boolean ENABLE = false;
     private SocialManager() {
     }
 
     public static SocialManager init(Context context, boolean debug) {
         SocialManager socialManager = new SocialManager();
-        UMShareAPI.get(context);
-        Config.DEBUG = debug;
-        UMShareConfig config = new UMShareConfig();
-        config.isNeedAuthOnGetUserInfo(true);
-        UMShareAPI.get(context).setShareConfig(config);
+        if(ENABLE) {
+            UMShareAPI.get(context);
+            Config.DEBUG = debug;
+            UMShareConfig config = new UMShareConfig();
+            config.isNeedAuthOnGetUserInfo(true);
+            UMShareAPI.get(context).setShareConfig(config);
+        }
         return socialManager;
     }
 

@@ -9,6 +9,7 @@ public class ApiConstant {
     public static final int EN_FORMAL = 2;//正式，上线
     public static final String APP_ID = "123456";
     public static final String APP_SECURITY_KEY = "d67266586dffe8085126f3383afe8e3c";
+    public static final String APP_SHARE_URL = "";
     public static String BASE_HOST = ApiEnvironment.RELEASE.getBaseApiUrl();
     public static String HTML5_HOST = ApiEnvironment.RELEASE.getBaseH5Url();
     public static String MEMBER_API = BASE_HOST + "/member-api";

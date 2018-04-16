@@ -25,7 +25,8 @@ import android.widget.Toast;
 
 import com.common.basecomponent.util.L;
 import com.fullshare.basebusiness.R;
-import com.umeng.analytics.MobclickAgent;
+
+import common.service.StatisticsManager;
 
 /**
  * Created by wuxiaowei on 2017/6/4.
@@ -93,7 +94,7 @@ public abstract class BaseBusinessWebViewActivity extends CommonBaseActivity {
                     public void run() {
                         if (mContext != null) {
                             Toast.makeText(mContext, errorCode + "-" + description + "-" + failingUrl, Toast.LENGTH_SHORT).show();
-                            MobclickAgent.reportError(mContext, errorCode + "-" + description + "-" + failingUrl);
+                            StatisticsManager.reportError(mContext, errorCode + "-" + description + "-" + failingUrl);
                         }
                     }
                 });
