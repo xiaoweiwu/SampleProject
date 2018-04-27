@@ -1,5 +1,6 @@
 package com.common.basecomponent.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -43,6 +44,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         ActivityManageController.getInstance().pushActivity(this);
         settingOptions = new SettingOptions();
         loadingViewController = new LoadingViewController();
+        loadingViewController.setActivity(this);
         initArguments();
         if (settingOptions.isEventEnable()) {
             BusProvider.getInstance().register(this);
@@ -104,6 +106,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         }
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void startActivityForResult(Intent intent, int requestCode, @Nullable Bundle options) {
         super.startActivityForResult(intent, requestCode, options);
@@ -164,7 +167,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
 
     protected abstract ALoadingView createLoadingView();
 
-    protected abstract Dialog createLoadingDialog();
+    public abstract Dialog createLoadingDialog();
 
 
 }

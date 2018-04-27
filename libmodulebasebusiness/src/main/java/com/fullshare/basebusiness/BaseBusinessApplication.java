@@ -2,6 +2,7 @@ package com.fullshare.basebusiness;
 
 import com.common.basecomponent.BaseApplication;
 import com.common.basecomponent.util.L;
+import com.common.basecomponent.SystemInfo;
 import com.fullshare.basebusiness.constants.AppConfig;
 import com.orhanobut.logger.Logger;
 //import com.umeng.message.IUmengRegisterCallback;
@@ -15,15 +16,7 @@ import common.service.StatisticsManager;
 
 public abstract class BaseBusinessApplication extends BaseApplication {
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        long t1 = System.currentTimeMillis();
-        init();
-        L.e("启动耗时" + (System.currentTimeMillis() - t1) + "");
-    }
-
-    private void init() {
+    protected void init() {
         initLogger();
         initShare();
         initUMStat();
@@ -48,7 +41,7 @@ public abstract class BaseBusinessApplication extends BaseApplication {
      * 友盟分享
      */
     private void initShare() {
-        SocialManager.init(this, isDebug())
+        SocialManager.init(this, SystemInfo.getSystemInfo().isDebug())
                 .setWeixin(AppConfig.UMENG_SHARE_WX_APPID,
                         AppConfig.UMENG_SHARE_WX_APPSECRET)
                 .setQQZone(AppConfig.UMENG_SHARE_SINA_APPID,
@@ -59,7 +52,7 @@ public abstract class BaseBusinessApplication extends BaseApplication {
     }
 
     private void initUMStat() {
-        StatisticsManager.init(this, AppConfig.UMENT_APP_KEY, getChannel());
+        StatisticsManager.init(this, AppConfig.UMENT_APP_KEY, SystemInfo.getSystemInfo().getChannel());
     }
 
     private void initPush() {

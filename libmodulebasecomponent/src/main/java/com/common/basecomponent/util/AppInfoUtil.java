@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
@@ -18,45 +19,14 @@ import java.util.UUID;
 
 public class AppInfoUtil {
 
-    public static String getAppVersionName(Context context) {
-        return BaseApplication.get().getAppVersionName();
-    }
-
-    public static String getAppVersionCode(Context context) {
-        return BaseApplication.get().getAppVersionName();
-    }
-
-    private static PackageInfo getPackageInfo(Context context) {
-        PackageManager packageManager = context.getPackageManager();
-        String packageName = context.getPackageName();
-        PackageInfo packageInfo = null;
-        try {
-            packageInfo = packageManager.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
-        } catch (PackageManager.NameNotFoundException e) {
-        }
-        return packageInfo;
-    }
-
-    public static boolean checkPermisson(Context context, String permisson) {
-        return context.checkCallingOrSelfPermission(permisson) == PackageManager.PERMISSION_GRANTED;
-//        return ContextCompat.checkSelfPermission(context,permisson)== PackageManager.PERMISSION_GRANTED;
-    }
-
     public static String getDeviceId(Context context) {
         String deviceId = "";
-        if (checkPermisson(context, permission.READ_PHONE_STATE)) {
+        if (ActivityCompat.checkSelfPermission(context, permission.READ_PHONE_STATE)==PackageManager.PERMISSION_GRANTED) {
             try {
                 TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
                 deviceId = telephonyManager.getDeviceId();
-                deviceId = deviceId == null ? getAndroidId(context) : deviceId;
             } catch (Exception e) {
-                deviceId = getAndroidId(context);
             }
-        } else {
-            deviceId = getAndroidId(context);
-        }
-        if (TextUtils.isEmpty(deviceId)) {
-            deviceId = UUID.randomUUID().toString();
         }
         return deviceId;
     }

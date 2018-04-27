@@ -24,7 +24,7 @@ public class ApiTestUtil {
         }
         ApiConstant.BASE_HOST = apiEnvironment.getBaseApiUrl();
         ApiConstant.HTML5_HOST = apiEnvironment.getBaseH5Url();
-        ApiConstant.MEMBER_API = ApiConstant.BASE_HOST + "/member-api";
+        ApiConstant.COACH_API = ApiConstant.BASE_HOST + "/coach";
 
     }
 

@@ -53,7 +53,7 @@ public class ScannerView extends View {
         paint = new Paint();
 
         cornerPaint = new Paint();
-        cornerPaint.setColor(0xff23A492);
+        cornerPaint.setColor(getResources().getColor(R.color.corner));
         cornerPaint.setStyle(Paint.Style.STROKE);
         cornerPaint.setStrokeWidth(2 * dip);
 
@@ -70,7 +70,11 @@ public class ScannerView extends View {
 
         if (mFrame == null && width > 0 && height > 0) {
             mFrame = new Rect();
-            mFrame.top = getPaddingTop();
+            if(getPaddingTop()==0){
+                mFrame.top = (height-(width-getPaddingLeft()-getPaddingRight()))/2;
+            }else {
+                mFrame.top = getPaddingTop();
+            }
             mFrame.left = getPaddingLeft();
             mFrame.right = width - getPaddingRight();
             mFrame.bottom = mFrame.width() + mFrame.top;

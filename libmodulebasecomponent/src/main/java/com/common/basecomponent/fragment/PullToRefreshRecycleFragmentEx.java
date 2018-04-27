@@ -32,8 +32,8 @@ public abstract class PullToRefreshRecycleFragmentEx extends PullToRefreshFragme
     protected LinearLayoutManager linearLayoutManager;
     protected OnItemClickListener onItemClickListener = new OnItemClickListener() {
         @Override
-        public void onItemClick(View v, int position) {
-            onItemClicked(v, position);
+        public void onItemClick(View v, int position, Object o) {
+            onItemClicked(v,position,0);
         }
     };
     boolean isScrollingTop;

@@ -25,12 +25,28 @@ public class EventModel {
         data4 = builder.data4;
     }
 
+    public Object getData1() {
+        return data1;
+    }
+
+    public Object getData2() {
+        return data2;
+    }
+
+    public Object getData3() {
+        return data3;
+    }
+
+    public Object getData4() {
+        return data4;
+    }
+
     public static Builder newBuilder() {
         return new Builder();
     }
 
-    public boolean handleEvent(String eventId) {
-        return this.eventId.equals(eventId);
+    public static boolean handleEvent(EventModel eventModel,String eventId) {
+        return eventModel!=null&&eventModel.eventId.equals(eventId);
     }
 
     public static final class Builder {

@@ -139,4 +139,9 @@ public class BaseRefreshData implements BaseData {
         dest.writeString(this.path);
         dest.writeByte(this.forceNoPage ? (byte) 1 : (byte) 0);
     }
+
+    @Override
+    public String getDisplayTitle() {
+        return null;
+    }
 }

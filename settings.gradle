@@ -1,1 +1,1 @@
-include ':app', ':libmodulebasecomponent', ':libmodulethirdservice', ':libmodulepush', ':libmodulebasebusiness', ':libmodulezxing'
+include ':app', ':libmodulebasecomponent', ':libmodulebasebusiness', ':libmodulethirdservice', ':libmodulezxing', ':libdatepicker', ':libstickyheaderrecyclerview'

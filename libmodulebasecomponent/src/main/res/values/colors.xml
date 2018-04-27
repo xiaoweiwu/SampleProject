@@ -17,18 +17,19 @@
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
 
-    <color name="app_main">#23A492</color>
+    <color name="app_main">#3AA7FF</color>
     <!--app底色-->
     <color name="common_background">#FFFFFF</color>
     <!--背景色、搜索框-->
-    <color name="common_grey_background">#F3F3F3</color>
+    <color name="common_grey_background">#F4F6F9</color>
     <!--绿色文字-->
     <color name="app_text_color">@color/app_main</color>
     <!--绿色文字按下-->
-    <color name="app_text_color_press">#23A492</color>
+    <color name="app_text_color_press">#3AA7FF</color>
 
     <!--app内通用黑色字体颜色-->
     <color name="common_text_color">#333333</color>
+    <!--#0E1C29-->
     <!--app内通用深灰字体颜色-->
     <color name="common_text_dark_color">#A8A8A8</color>
     <!--app内通用深灰字体颜色-->
@@ -41,8 +42,8 @@
     <color name="common_text_disable_color">#CCCCCC</color>
     <!--红色警醒颜色-->
     <color name="caution">#F66F6C</color>
-    <color name="common_button_color_normal">#ff04C5B4</color>
-    <color name="common_button_color_pressed">#00A99A</color>
+    <color name="common_button_color_normal">#3AA7FF</color>
+    <color name="common_button_color_pressed">#993AA7FF</color>
     <color name="common_button_color_disable">#E6E6E6</color>
     <!-- 黄色按钮 -->
     <color name="app_yellow">#FFD93D</color>

@@ -47,11 +47,13 @@ public abstract class BasePullToRefreshListViewFragment extends PullToRefreshLis
         if (isLoadingMore) {
             page = getRefreshData().getCurrentPage() + 1;
         }
+        HashMap param = new HashMap();
+        addCustomParam(param);
         final CommonHttpRequest request = new CommonHttpRequest.Builder()
                 .fullUrl(getRefreshData().getPath() + "")
                 .addbody("pageSize", getRefreshData().getPageNum() + "")
                 .addbody("currentPage", page + "")
-                .addBodyMap(addCustomParam())
+                .addBodyMap(param)
                 .build();
         OnResponseCallback callback = getRealCallback(isLoadingMore);
         HttpService.request(getActivity(), request, callback);
@@ -124,11 +126,9 @@ public abstract class BasePullToRefreshListViewFragment extends PullToRefreshLis
         return callback;
     }
 
-    @Override
-    public HashMap<String, Object> addCustomParam() {
-        return null;
-    }
+    public void addCustomParam(HashMap param) {
 
+    }
     @Override
     protected ALoadingView createLoadingView() {
         return new LoadingLayout(mContext);

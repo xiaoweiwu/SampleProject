@@ -11,6 +11,9 @@
         <attr name="LiDividerMarginLR" format="dimension" />
         <attr name="LiContentMarginLeft" format="dimension" />
         <attr name="LiContentMarginRight" format="dimension" />
+        <attr name="LiTitleTextColor" format="color"></attr>
+        <attr name="LiValueTextColor" format="color"></attr>
+        <attr name="LiShowIcon" format="boolean"></attr>
     </declare-styleable>
     <attr name="sizeBase" format="enum">
         <enum name="width" value="0" />
@@ -27,5 +30,14 @@
     <declare-styleable name="SizeRatioRelativeLayout">
         <attr name="sizeBase" />
         <attr name="rate" />
+    </declare-styleable>
+
+    <declare-styleable name="QuickSideBarView">
+        <attr name="sidebarTextColor" format="color|reference"/>
+        <attr name="sidebarBackgroundColor" format="color|reference"/>
+        <attr name="sidebarTextColorChoose" format="color|reference"/>
+        <attr name="sidebarTextSize" format="dimension"/>
+        <attr name="sidebarTextSizeChoose" format="dimension"/>
+        <attr name="sidebarItemHeight" format="dimension"/>
     </declare-styleable>
 </resources>

@@ -25,7 +25,7 @@ public abstract class CommonBaseActivity extends BaseActivity {
     }
 
     @Override
-    protected Dialog createLoadingDialog() {
+    public Dialog createLoadingDialog() {
         return new LoadingDialog(mContext);
     }
 

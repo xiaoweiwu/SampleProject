@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Copyright 2012 Square, Inc. -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true">
+        <shape>
+            <solid android:color="@color/calendar_inactive_month_bg"></solid>
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="oval">
+            <size android:width="8dp" android:height="8dp" />
+            <solid android:color="@color/calendar_data_bg"></solid>
+        </shape>
+    </item>
+</selector>

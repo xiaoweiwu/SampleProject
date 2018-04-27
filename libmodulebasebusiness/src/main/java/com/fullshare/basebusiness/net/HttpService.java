@@ -50,6 +50,7 @@ public class HttpService {
             public void subscribe(ObservableEmitter<T> emitter) throws Exception {
                 CommonHttpResponse<T> response = getRemoteData(context, request, callback != null ? callback.getType() : null);
                 if (response.isBusinessSuccessful()) {
+                    callback.setDataNull(response.dataNull);
                     emitter.onNext(response.getData());
                     emitter.onComplete();
                 } else {
@@ -80,7 +81,7 @@ public class HttpService {
                     @Override
                     public void onNext(T model) {
                         if (callback != null) {
-                            callback.onSuccess(model);
+                            callback.onSuccess(callback.isDataNull()?null:model);
                             callback.onFinish(true, new ResponseStatus(0, ErrorType.SUCCESS, ""));
                         }
                     }
@@ -136,11 +137,18 @@ public class HttpService {
                         type = Object.class;
                     }
                     ParameterizeTypeImpl realType = ParameterizeTypeImpl.get(CommonHttpResponse.class, type);
-                    CommonHttpResponse<T> responseModel = GsonHelper.getGson().fromJson(baseResponse.getResponse(), realType);
+                    JSONObject jsonObject = new JSONObject(baseResponse.getResponse());
+                    boolean isDataNull = String.valueOf(jsonObject.get("data")) == null||"null".equals(String.valueOf(jsonObject.get("data")));
+                     if(isDataNull){
+                         JSONObject jb = new JSONObject("{}");
+                        jsonObject.put("data",jb);
+                    }
+                    CommonHttpResponse<T> responseModel = GsonHelper.getGson().fromJson(jsonObject.toString(), realType);
                     realResponse.setHttpSuccessful(true);
                     realResponse.setCode(responseModel.getCode());
                     realResponse.setData(responseModel.getData());
                     realResponse.setMsg(responseModel.getMsg());
+                    realResponse.setDataNull(isDataNull);
                 }
 
             } else {
@@ -221,7 +229,7 @@ public class HttpService {
 //                    UserInfoUtil.clearUserInfo();
                     BusProvider.getInstance().post(EventModel.newBuilder().eventId(BusinessEvent.EVENT_ON_LOGIN_OUT).build());
                     Intent intent = new Intent();
-                    intent.setClassName(context, "com.fullshare.fsb.auth.LoginActivity");
+                    intent.setClassName(context, "com.yundong.gym_crm.login.LoginActivity");
                     intent.putExtra(Argumentkey.REQUEST_LOGIN, true);
                     context.startActivity(intent);
                 } else if (responseStatus.getCode() == RespCode.TOKEN_OUT_DATE) {
@@ -231,7 +239,14 @@ public class HttpService {
                 }
             }
         } else {
-            throw new RuntimeException(e);
+            AppHttpException ex = new AppHttpException(ErrorType.UNKNOW_ERROR, new RuntimeException(e));
+            StatisticsManager.reportError(context, ex);
+            ResponseStatus responseStatus = new ResponseStatus(ex.getExCode(), ex.getErrorType()
+                    , ex.getMessage());
+            if (callback != null) {
+                callback.onFinish(false, responseStatus);
+            }
+//            throw new RuntimeException(e);
         }
     }
 }

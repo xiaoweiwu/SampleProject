@@ -304,7 +304,8 @@ public class ToolBarEx extends FrameLayout {
         return this;
     }
 
-    public ToolBarEx setbackgroundTransparent() {
+
+    public ToolBarEx setBackgroundTransparent() {
         if (rlTitle != null) {
             rlTitle.setBackgroundColor(getContext().getResources().getColor(android.R.color.transparent));
         }

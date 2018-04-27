@@ -23,7 +23,7 @@ import com.common.basecomponent.fragment.refresh.LoadMoreHelper;
 
 public class LoadingViewController {
 
-    private boolean needLoadingView;
+    private boolean needLoadingView = true;
 
     private ALoadingView loadingView;
 
@@ -71,6 +71,10 @@ public class LoadingViewController {
         loadingView = null;
         activity = null;
         maskView = null;
+    }
+
+    public Dialog getLoadingDialog() {
+        return loadingDialog;
     }
 
     public EmptyType getEmptyType() {

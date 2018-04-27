@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Build;
 
 import com.common.basecomponent.BaseApplication;
+import com.common.basecomponent.SystemInfo;
 import com.fullshare.basebusiness.net.CommonHttpRequest;
 import com.fullshare.basebusiness.net.HttpService;
 import com.fullshare.basebusiness.net.OnResponseCallback;
@@ -22,7 +23,7 @@ public class AppManagerApi {
                 .url(NAME)
                 .businessMethod("device")
                 .addbody("platform", "Android")
-                .addbody("appVersion", BaseApplication.get().getAppVersionName())
+                .addbody("appVersion", SystemInfo.getSystemInfo().getVersionName())
                 .addbody("osVersion", Build.VERSION.RELEASE)
                 .addbody("mode", Build.MODEL)
                 .addbody("brand", Build.BRAND)

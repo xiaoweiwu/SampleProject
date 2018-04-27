@@ -56,7 +56,7 @@ public abstract class PullToRefreshListViewFragmentEx extends PullToRefreshFragm
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                PullToRefreshListViewFragmentEx.this.onItemClicked(view, position);
+                PullToRefreshListViewFragmentEx.this.onItemClicked(view, position,mAdapter.getItem(position));
             }
         });
 

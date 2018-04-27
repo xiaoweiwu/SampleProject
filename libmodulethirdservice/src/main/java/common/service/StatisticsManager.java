@@ -11,7 +11,7 @@ import java.util.HashMap;
  */
 
 public class StatisticsManager {
-    public static final boolean ENABLE = false;
+    public static final boolean ENABLE = ServiceConfig.STATISTIC_ENABLE;
     public static void init(Context context, String appKey, String channel) {
         if(ENABLE) {
             MobclickAgent.setScenarioType(context, MobclickAgent.EScenarioType.E_UM_NORMAL);

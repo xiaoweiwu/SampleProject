@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.common.basecomponent.R;
+import com.common.basecomponent.activity.BaseActivity;
 import com.common.basecomponent.fragment.refresh.ALoadingView;
 import com.common.basecomponent.widget.ToolBarEx;
 
@@ -43,11 +44,11 @@ public abstract class BaseFragment extends CommonBaseFragment {
 
     @Override
     protected void preInit(View v) {
-        initTitle();
+        initTitleBar();
         initLoadingView();
     }
 
-    protected void initTitle() {
+    private void initTitleBar() {
         toolBarEx = (ToolBarEx) getView().findViewById(R.id.toolbar);
         ivBack = (ImageView) getView().findViewById(R.id.iv_back);
         if (ivBack != null) {
@@ -63,6 +64,7 @@ public abstract class BaseFragment extends CommonBaseFragment {
     private void initLoadingView() {
         ViewGroup content = getView().findViewById(R.id.content_id);
         loadingViewController.setActivity(getActivity());
+        loadingViewController.setLoadingDialog(((BaseActivity)getActivity()).getLoadingViewController().getLoadingDialog());
         if (loadingViewController.isNeedLoadingView() && content != null) {
             if (!loadingViewController.hasLoadingView()) {
                 loadingViewController.setLoadingView(createLoadingView());

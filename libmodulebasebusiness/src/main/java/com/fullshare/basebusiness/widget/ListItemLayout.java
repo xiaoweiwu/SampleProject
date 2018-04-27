@@ -10,6 +10,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.common.basecomponent.util.UnitConvertUtil;
+import com.common.basecomponent.util.ViewUtils;
 import com.common.basecomponent.widget.ShSwitchView;
 import com.common.basecomponent.widget.ShSwitchView.OnSwitchStateChangeListener;
 import com.fullshare.basebusiness.R;
@@ -22,6 +24,7 @@ public class ListItemLayout extends FrameLayout {
     public static final int TEXT = 0;
     public static final int SWITCH = 1;
     public static final int ARROW = 2;
+
     TextView tvTitle;
     ImageView ivArrow;
     ImageView ivIcon;
@@ -36,6 +39,12 @@ public class ListItemLayout extends FrameLayout {
     private CharSequence title;
     private boolean showDivider = true;
 
+    int titleTextColor;
+    int valueTextColor;
+    boolean showIcon;
+    int dividerMarginLR;
+    int contentLeft;
+    int contentRight;
     public ListItemLayout(Context context) {
         this(context, null);
     }
@@ -50,9 +59,12 @@ public class ListItemLayout extends FrameLayout {
         showDivider = ta.getBoolean(R.styleable.ListItemLayout_LiShowDivider, true);
         title = ta.getText(R.styleable.ListItemLayout_LiTitle);
         type = ta.getInt(R.styleable.ListItemLayout_LiType, type);
-        int dividerMarginLR = ta.getDimensionPixelSize(R.styleable.ListItemLayout_LiDividerMarginLR, getResources().getDimensionPixelSize(R.dimen.horizontal_margin));
-        int contentLeft = ta.getDimensionPixelSize(R.styleable.ListItemLayout_LiContentMarginLeft, getResources().getDimensionPixelSize(R.dimen.horizontal_margin));
-        int contentRight = ta.getDimensionPixelSize(R.styleable.ListItemLayout_LiContentMarginRight, getResources().getDimensionPixelSize(R.dimen.dp_5));
+        dividerMarginLR = ta.getDimensionPixelSize(R.styleable.ListItemLayout_LiDividerMarginLR, 0);
+        contentLeft = ta.getDimensionPixelSize(R.styleable.ListItemLayout_LiContentMarginLeft, 0);
+        contentRight = ta.getDimensionPixelSize(R.styleable.ListItemLayout_LiContentMarginRight, 0);
+        titleTextColor = ta.getColor(R.styleable.ListItemLayout_LiTitleTextColor,getResources().getColor(R.color.li_title));
+        valueTextColor = ta.getColor(R.styleable.ListItemLayout_LiValueTextColor,getResources().getColor(R.color.li_value));
+        showIcon = ta.getBoolean(R.styleable.ListItemLayout_LiShowIcon,false);
         ta.recycle();
         View view = LayoutInflater.from(context).inflate(R.layout.layout_setting_list_item, this);
         tvTitle = (TextView) view.findViewById(R.id.tv_title);
@@ -81,10 +93,13 @@ public class ListItemLayout extends FrameLayout {
             }
         });
         tvTitle.setText(title);
+        tvTitle.setTextColor(titleTextColor);
+        tvValue.setTextColor(valueTextColor);
         setType(type);
         showDivider(showDivider);
+        ivIcon.setVisibility(showIcon?VISIBLE:GONE);
+        setClickable(true);
     }
-
 
     public ListItemLayout setType(int type) {
         this.type = type;
@@ -92,6 +107,7 @@ public class ListItemLayout extends FrameLayout {
             tvValue.setVisibility(VISIBLE);
             switchView.setVisibility(GONE);
             ivArrow.setVisibility(GONE);
+            ViewUtils.setMarginRight(tvValue, UnitConvertUtil.dip2px(getContext(),20));
         } else if (type == SWITCH) {
             switchView.setVisibility(VISIBLE);
             tvValue.setVisibility(GONE);
@@ -114,6 +130,7 @@ public class ListItemLayout extends FrameLayout {
         return this;
     }
 
+
     public ListItemLayout setLeftValueText(String value) {
         tvValueLeft.setText(value);
         tvValueLeft.setVisibility(VISIBLE);
@@ -124,6 +141,12 @@ public class ListItemLayout extends FrameLayout {
         tvTitle.setText(title);
         return this;
     }
+
+    public void setValueTextColor(int valueTextColor) {
+        this.valueTextColor = valueTextColor;
+        tvValue.setTextColor(valueTextColor);
+    }
+
 
     public ListItemLayout showDivider(boolean show) {
         divider.setVisibility(show ? VISIBLE : INVISIBLE);

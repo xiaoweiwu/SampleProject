@@ -118,7 +118,7 @@
         android:layout_toRightOf="@+id/flLeft2"
         android:maxLines="1"
         android:textColor="@color/common_text_color"
-        android:textSize="@dimen/text_size_18"
+        android:textSize="@dimen/text_size_17"
         tools:text="这是标题" />
 
     <FrameLayout

@@ -2,6 +2,7 @@ package com.fullshare.basebusiness.base;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.common.basecomponent.entity.BaseData;
@@ -34,8 +35,9 @@ public abstract class BasePullToRefreshRecyclerViewFragment extends PullToRefres
     protected void preInit(View v) {
         super.preInit(v);
         if (getToolBarEx() != null) {
-            getToolBarEx().setDividerVisiblity(View.INVISIBLE);
-            getToolBarEx().setTitleCenter(true).getBackImageView().setImageResource(R.drawable.btn_back_selector);
+//            getToolBarEx().setDividerVisiblity(View.INVISIBLE);
+            getToolBarEx().setTitleCenter(true).getBackImageView()
+                    .setImageResource(R.drawable.btn_back_selector);
             getToolBarEx().setWhiteBackRes(R.drawable.btn_back_white_selector);
         }
     }
@@ -48,15 +50,22 @@ public abstract class BasePullToRefreshRecyclerViewFragment extends PullToRefres
             performTestData(isLoadingMore);
             return;
         }
+
+        if(TextUtils.isEmpty(getRefreshData().getPath())){
+            return;
+        }
+
         int page = 1;
         if (isLoadingMore) {
             page = getRefreshData().getNextPage();
         }
+        HashMap param = new HashMap();
+        addCustomParam(param);
         final CommonHttpRequest request = new CommonHttpRequest.Builder()
                 .fullUrl(getRefreshData().getPath() + "")
                 .addbody("pageSize", getRefreshData().getPageNum() + "")
                 .addbody("currentPage", page + "")
-                .addBodyMap(addCustomParam())
+                .addBodyMap(param)
                 .build();
         OnResponseCallback callback = getRealCallback(isLoadingMore);
         HttpService.request(getActivity(), BasePullToRefreshRecyclerViewFragment.this, request, callback);
@@ -134,10 +143,6 @@ public abstract class BasePullToRefreshRecyclerViewFragment extends PullToRefres
         return R.layout.fragment_single_refresh_list2;
     }
 
-    @Override
-    public HashMap<String, Object> addCustomParam() {
-        return null;
-    }
 
     @Override
     protected Type initGsonTypeRequired() {

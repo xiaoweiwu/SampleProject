@@ -8,7 +8,18 @@ import java.lang.reflect.Type;
  */
 
 public abstract class OnResponseCallback<T> {
+
     private Type type;
+
+    private boolean dataNull;
+
+    public boolean isDataNull() {
+        return dataNull;
+    }
+
+    public void setDataNull(boolean dataNull) {
+        this.dataNull = dataNull;
+    }
 
     public OnResponseCallback() {
         type = getSuperclassTypeParameter();

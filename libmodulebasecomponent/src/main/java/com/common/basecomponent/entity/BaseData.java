@@ -7,4 +7,6 @@ import android.os.Parcelable;
  */
 
 public interface BaseData extends Parcelable {
+
+    String getDisplayTitle();
 }

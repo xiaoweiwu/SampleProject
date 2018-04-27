@@ -7,7 +7,7 @@
     <View
         android:id="@+id/divider_line_top"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_05"
+        android:layout_height="@dimen/dp_03"
         android:background="@color/divider" />
 
     <View

@@ -54,7 +54,7 @@ public class LoadingDialog extends Dialog {
 
     @Override
     public void show() {
-        if (!animationDrawable.isRunning()) {
+        if (animationDrawable!=null&&!animationDrawable.isRunning()) {
             animationDrawable.start();
         }
         super.show();
@@ -66,7 +66,7 @@ public class LoadingDialog extends Dialog {
             @Override
             public void onShow(DialogInterface dialog) {
                 listener.onShow(dialog);
-                if (!animationDrawable.isRunning()) {
+                if (animationDrawable!=null&&!animationDrawable.isRunning()) {
                     animationDrawable.start();
                 }
             }

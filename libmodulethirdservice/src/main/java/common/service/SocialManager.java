@@ -1,6 +1,7 @@
 package common.service;
 
 import android.content.Context;
+import android.content.Intent;
 
 import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
@@ -13,7 +14,7 @@ import com.umeng.socialize.UMShareConfig;
 
 public class SocialManager {
 
-    public static final boolean ENABLE = false;
+    public static final boolean ENABLE = ServiceConfig.SOCIAL_ENABLE;
     private SocialManager() {
     }
 
@@ -46,4 +47,16 @@ public class SocialManager {
                 secret);
         return this;
     }
+
+    public static void release(Context context){
+        UMShareAPI.get(context).release();
+
+    }
+    public static void onActivityResult(Context context,int requestCode, int resultCode, Intent data){
+        UMShareAPI.get(context).onActivityResult(requestCode, resultCode, data);
+
+    }
+
+
+
 }

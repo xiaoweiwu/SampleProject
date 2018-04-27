@@ -1,5 +1,6 @@
 package com.common.basecomponent.adapter.recyclerview;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
@@ -25,9 +26,11 @@ public abstract class BaseRecycleViewAdapter<D, VH extends BaseRecycleHolder> ex
 
     protected Context mContext;
 
+    protected Activity activity;
     public BaseRecycleViewAdapter(Context context, List<D> itemDatas, OnItemClickListener onItemClickListener) {
         mInflater = LayoutInflater.from(context);
         this.mContext = context;
+        this.activity = (Activity) context;
         if (itemDatas == null) {
             this.itemDatas = new ArrayList<>();
         } else {
@@ -69,7 +72,7 @@ public abstract class BaseRecycleViewAdapter<D, VH extends BaseRecycleHolder> ex
             holder.itemView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    onItemClickListener.onItemClick(view, position);
+                    onItemClickListener.onItemClick(view, position,getItem(position));
                 }
             });
         }
@@ -78,7 +81,7 @@ public abstract class BaseRecycleViewAdapter<D, VH extends BaseRecycleHolder> ex
             holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-                    onItemLongClickListener.onItemLongClick(view, position);
+                    onItemLongClickListener.onItemLongClick(view, position,getItem(position));
                     return false;
                 }
             });
@@ -188,11 +191,11 @@ public abstract class BaseRecycleViewAdapter<D, VH extends BaseRecycleHolder> ex
 
     protected abstract void onBindData(VH holder, int position);
 
-    public interface OnItemClickListener {
-        void onItemClick(View v, int position);
+    public interface OnItemClickListener<D> {
+        void onItemClick(View v, int position,D d);
     }
 
-    public interface OnItemLongClickListener {
-        void onItemLongClick(View v, int position);
+    public interface OnItemLongClickListener<D> {
+        void onItemLongClick(View v, int position,D d);
     }
 }

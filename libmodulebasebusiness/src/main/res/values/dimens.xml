@@ -13,4 +13,10 @@
     <dimen name="horizontal_margin">@dimen/dp_15</dimen>
 
     <dimen name="tab_height">@dimen/dp_35</dimen>
+
+    <dimen name="textSize_quicksidebar">10sp</dimen>
+    <dimen name="textSize_quicksidebar_choose">15sp</dimen>
+    <dimen name="textSize_quicksidebartips">20sp</dimen>
+    <dimen name="height_quicksidebartips">45dp</dimen>
+    <dimen name="height_quicksidebaritem">20dp</dimen>
 </resources>

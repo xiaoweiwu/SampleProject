@@ -6,6 +6,8 @@ import com.common.basecomponent.constant.BaseConstant.HttpParamKey;
 import com.common.basecomponent.util.EncryptUtil;
 import com.common.basecomponent.util.L;
 import com.fullshare.basebusiness.api.ApiConstant;
+import com.common.basecomponent.SystemInfo;
+import com.fullshare.basebusiness.api.UserAuthInfo;
 import com.fullshare.basebusiness.constants.AppConfig.BusinessMethod;
 import com.fullshare.basebusiness.util.GsonHelper;
 
@@ -40,7 +42,7 @@ public class HttpUtil {
         } else if ("POST".equals(baseRequest.method())) {
             request = buildPostRequest(baseRequest);
         }
-        if (BaseApplication.get().isLogDebug()) {
+        if (SystemInfo.getSystemInfo().isLogDebug()) {
             JSONObject jsonObject = new JSONObject();
             try {
                 jsonObject.put("url", baseRequest.url());
@@ -72,15 +74,15 @@ public class HttpUtil {
 
     public static void addHeaders(CommonHttpRequest baseRequest) {
         Map<String, String> headers = baseRequest.headers();
-//        headers.put(HttpParamKey.DEVICE_ID, UserInfoUtil.getDeviceId());
+        headers.put(HttpParamKey.DEVICE_ID, SystemInfo.getSystemInfo().getDeviceId());
         headers.put(HttpParamKey.CONTENT_TYPE, HttpParam.CONTENT_TYPE);
         headers.put(HttpParamKey.ACCEPT, HttpParam.ACCEPT);
-//        headers.put(HttpParamKey.AUTHORIZATION, UserInfoUtil.getToken());
+        headers.put(HttpParamKey.AUTHORIZATION, UserAuthInfo.getUserAuthInfo().getToken());
         headers.put(HttpParamKey.PLATFORM, HttpParam.PLATFORM);
         headers.put(HttpParamKey.OS, HttpParam.OS);
-        headers.put(HttpParamKey.APP_VERSION, BaseApplication.get().getAppVersionName());
+        headers.put(HttpParamKey.APP_VERSION, SystemInfo.getSystemInfo().getVersionName());
         headers.put(HttpParamKey.MODEL, HttpParam.MODEL);
-        headers.put(HttpParamKey.CHANNEL, BaseApplication.get().getChannel());
+        headers.put(HttpParamKey.CHANNEL, SystemInfo.getSystemInfo().getChannel());
         headers.put(HttpParamKey.BRAND, HttpParam.BRAND);
     }
 

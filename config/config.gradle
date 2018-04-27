@@ -36,7 +36,7 @@ ext {
             okhttp3                  : 'com.squareup.okhttp3:okhttp:3.6.0',
             rxjava                   : 'io.reactivex.rxjava2:rxjava:2.1.12',
             rxandroid                : 'io.reactivex.rxjava2:rxandroid:2.0.2',
-            meituan_walle            : 'com.meituan.android.walle:library:1.1.5',
+            meituan_walle            : 'com.meituan.android.walle:library:1.1.6',
             greendao                 : 'org.greenrobot:greendao:3.2.0',
             rxlifecycle              : "com.trello.rxlifecycle2:rxlifecycle:${rxLifeCycle}",
             rxlifecycle_android      : "com.trello.rxlifecycle2:rxlifecycle-android:${rxLifeCycle}",

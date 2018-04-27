@@ -16,6 +16,16 @@ public class CommonHttpResponse<T> {
     private boolean businessSuccessful;
     private boolean httpSuccessful;
 
+    public boolean dataNull;
+
+    public boolean isDataNull() {
+        return dataNull;
+    }
+
+    public void setDataNull(boolean dataNull) {
+        this.dataNull = dataNull;
+    }
+
     public int getStatusCode() {
         return statusCode;
     }

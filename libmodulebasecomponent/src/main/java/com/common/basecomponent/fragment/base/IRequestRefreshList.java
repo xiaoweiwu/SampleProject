@@ -17,6 +17,6 @@ public interface IRequestRefreshList {
     /**
      * 添加的自定义参数
      */
-    HashMap<String, Object> addCustomParam();
+     void addCustomParam(HashMap<String, Object>param);
 
 }

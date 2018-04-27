@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="toolbar_height">48dp</dimen>
+    <dimen name="toolbar_height">44dp</dimen>
     <dimen name="menu_width">@dimen/toolbar_height</dimen>
     <dimen name="menu_height">@dimen/toolbar_height</dimen>
     <dimen name="text_size_8">8.0sp</dimen>
@@ -33,7 +33,8 @@
     <dimen name="text_size_36">36.0sp</dimen>
     <dimen name="text_size_39">39.0sp</dimen>
     <dimen name="text_size_40">40.0sp</dimen>
-
+    <dimen name="divider">0.3dp</dimen>
+    <dimen name="dp_03">0.3dp</dimen>
     <dimen name="dp_05">0.5dp</dimen>
     <dimen name="dp_1">1dp</dimen>
     <dimen name="dp_2">2dp</dimen>

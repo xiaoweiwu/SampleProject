@@ -42,6 +42,10 @@ public class ImageLoader {
         display(context, iv, url, defaultRes, DisplayType.NORMAL, 0, width, height);
     }
 
+    public static void display(Context context, ImageView iv, String url) {
+        display(context, iv, url, 0);
+    }
+
     public static void display(Context context, ImageView iv, String url, int defaultRes) {
         if (defaultRes == 0) {
             defaultRes = R.drawable.bg_loading;
@@ -75,6 +79,10 @@ public class ImageLoader {
      */
     public static void display(Context context, ImageView iv, int resId, int defaultRes) {
         display(context, iv, resId, defaultRes, DisplayType.NORMAL);
+    }
+
+    public static void display(Context context, ImageView iv, int resId) {
+        display(context, iv, resId, 0, DisplayType.NORMAL);
     }
 
     /**

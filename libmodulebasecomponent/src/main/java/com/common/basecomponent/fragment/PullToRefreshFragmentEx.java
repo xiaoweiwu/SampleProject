@@ -21,6 +21,7 @@ import com.common.basecomponent.widget.BasePtrUIHandler;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
@@ -95,7 +96,10 @@ public abstract class PullToRefreshFragmentEx extends BaseFragment
             });
         }
     }
+    @Override
+    public void addCustomParam(HashMap<String, Object> param) {
 
+    }
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -165,7 +169,7 @@ public abstract class PullToRefreshFragmentEx extends BaseFragment
 
     }
 
-    public void onItemClicked(View view, int position) {
+    public void onItemClicked(View view, int position,Object o) {
 
     }
 

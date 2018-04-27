@@ -10,8 +10,8 @@ import android.content.Intent;
 
 public class WebViewUtil {
 
-    public static void loadUrl(Context context, Class clazz, String url, String title, int loadId) {
-        Intent intent = new Intent(context, clazz);
+    public static void loadUrl(Context context, String url, String title, int loadId) {
+        Intent intent = new Intent(context, CommonWebViewActivity.class);
         intent.putExtra(BaseBusinessWebViewActivity.LOAD_UR, url);
         intent.putExtra(BaseBusinessWebViewActivity.TITLE, title);
         intent.putExtra(BaseBusinessWebViewActivity.SHOW_TITLE, true);
